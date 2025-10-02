@@ -1,0 +1,17 @@
+
+<div class="sidebar-content" [class.closed]="!isOpen">
+  <button mat-raised-button color="primary" (click)="openAddTypeDialog()">
+    ➕ Dodaj typ nawyku
+    </button>
+
+  <h4>Dostępne nawyki</h4>
+    <ul>
+        <li *ngFor="let habit of habitTypes">
+            {{ habit }}
+            <button mat-icon-button color="warn" (click)="removeHabitType(habit)">
+            <mat-icon>delete</mat-icon>
+            </button>
+        </li>
+    </ul>
+</div>
+

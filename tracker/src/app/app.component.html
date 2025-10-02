@@ -1,0 +1,25 @@
+<div class="app-container">
+  <header class="app-header">
+
+    <button mat-icon-button class="sidebar-toggle-btn" (click)="toggleSidebar()">
+      <mat-icon>{{ isSidebarOpen ? 'chevron_left' : 'menu' }}</mat-icon>
+    </button>
+
+    <h1>Tracker nawyków</h1>
+    
+  </header>
+
+  <div class="main-layout">
+    <aside *ngIf="isSidebarOpen" class="sidebar">
+      <app-sidebar></app-sidebar>
+    </aside>
+
+    <main class="content">
+      <app-kalendarz></app-kalendarz>
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <p>&copy; 2025 | Wykonane z ❤️ za pomocą Angular</p>
+  </footer>
+</div>

@@ -1,0 +1,50 @@
+
+<mat-card class="demo-inline-calendar-card">
+  <mat-calendar
+    ngSkipHydration
+    [selected]="selectedDate"
+    (selectedChange)="onDateChange($event)">
+  </mat-calendar>
+</mat-card>
+
+<div class="habit-list">
+    <div class="habit-header">
+        <h3>
+            Nawyki na: {{ selectedDate | date: 'longDate' }}
+
+        </h3>
+
+        <div class="habit-actions">
+            <button mat-raised-button color="primary" (click)="openAddHabitDialog()">
+                ➕ Dodaj nawyk
+            </button>
+        </div>
+    </div>
+
+  <ul *ngIf="habitsForSelectedDate.length > 0; else noHabits" class="habit-scroll">
+  <li *ngFor="let habit of habitsForSelectedDate" [class.completed]="habit.completed">
+    
+    <mat-checkbox
+      [checked]="habit.completed"
+      (change)="onHabitToggle($event, habit)">
+      <span [class.completed]="habit.completed">
+        {{ habit.name }} — {{ habit.value }}
+      </span>
+    </mat-checkbox>
+
+    <button mat-icon-button color="warn" (click)="removeHabit(habit)">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+  </li>
+</ul>
+
+
+  <ng-template #noHabits>
+    <p>Brak zapisanych nawyków dla tej daty.</p>
+  </ng-template>
+</div>
+
+
+
+

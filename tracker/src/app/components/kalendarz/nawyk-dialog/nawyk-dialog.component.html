@@ -1,0 +1,21 @@
+<!-- <p>nawyk-dialog works!</p> -->
+
+<h2 mat-dialog-title>Dodaj nawyk</h2>
+<mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Typ nawyku</mat-label>
+    <mat-select [(ngModel)]="habitType">
+        <mat-option *ngFor="let type of habitTypes" [value]="type">{{ type }}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Szczegóły</mat-label>
+    <input matInput [(ngModel)]="habitDetails" placeholder="np. 8 godzin, 5km" />
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Anuluj</button>
+    <button mat-raised-button color="primary" (click)="onSave()">Zapisz</button>
+</mat-dialog-actions>
